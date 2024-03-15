@@ -32,7 +32,7 @@ const EditLibrary: React.FC = () => {
         if (!token) return;
 
         const response = await axios.get(
-          `http://localhost:7050/library/${libraryId}`,
+          `http://63.33.88.86:7050/library/${libraryId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -63,7 +63,7 @@ const EditLibrary: React.FC = () => {
       };
 
       await axios.post(
-        `http://localhost:7050/editlibrary/${libraryId}`,
+        `http://63.33.88.86:7050/editlibrary/${libraryId}`,
         updatedLibraryData,
         {
           headers: {

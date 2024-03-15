@@ -17,7 +17,7 @@ const LibraryUpload = ({ onFileUpload }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:7050/upload",
+        "http://63.33.88.86:7050/upload",
         formData,
         {
           headers: {
