@@ -58,7 +58,7 @@ const EditLibrary: React.FC = () => {
         libraryName: event.currentTarget.libraryName.value,
         version: event.currentTarget.libraryVersion.value,
         hash: {
-          hash_value: event.currentTarget.libraryHash.value,
+          hashValue: event.currentTarget.libraryHash.value,
         },
       };
 
@@ -134,7 +134,7 @@ const EditLibrary: React.FC = () => {
                     InputLabelProps={{
                       shrink: true,
                     }}
-                    defaultValue={libraryData.hash.hash_value}
+                    defaultValue={libraryData.hash.hashValue}
                   />
                 </Grid>
               </>
