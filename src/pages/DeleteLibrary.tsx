@@ -38,7 +38,7 @@ const DeleteLibraryPage: React.FC = () => {
     console.log("Library ID:", libraryId);
 
     axios
-      .get(`http://localhost:7050/library/${libraryId}`)
+      .get("https://ciaranchaney.com:443/library/${libraryId}")
       .then((response) => {
         setLibrary(response.data);
       })
@@ -49,7 +49,7 @@ const DeleteLibraryPage: React.FC = () => {
 
   const handleDelete = () => {
     axios
-      .delete(`http://localhost:7050/deletelibrary/${libraryId}/confirmed`, {
+      .delete(`https://ciaranchaney.com:443/deletelibrary/${libraryId}/confirmed`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

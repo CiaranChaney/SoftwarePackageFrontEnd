@@ -20,7 +20,7 @@ const LibraryDataTable = () => {
 
   useEffect(() => {
     axios
-      .get("http://63.33.88.86:7050/getLibraries")
+      .get("https://ciaranchaney.com:443/getLibraries")
       .then((response) => {
         if (Array.isArray(response.data)) {
           setListLibrary(response.data);

@@ -13,7 +13,7 @@ const LogOut: React.FC<{ token: string }> = ({ token }) => {
   const handleLogout = async () => {
     try {
       console.log(token);
-      const response = await axios.post("http://63.33.88.86:7050/logout", null, {
+      const response = await axios.post("https://ciaranchaney.com:443/logout", null, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
