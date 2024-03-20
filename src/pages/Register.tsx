@@ -14,6 +14,7 @@ import { LockOutlined } from "@mui/icons-material";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Favicon from "../components/Favicon";
 
 const darkTheme = createTheme({
   palette: {
@@ -23,14 +24,6 @@ const darkTheme = createTheme({
 
 const Register = () => {
   document.title = "Register";
-  const favicon = document.querySelector('link[rel="icon"]');
-  if (!favicon) {
-    const newFavicon = document.createElement("link");
-    newFavicon.rel = "icon";
-    newFavicon.href = "https://imgur.com/4bSXALG.png";
-    newFavicon.id = "favicon";
-    document.head.appendChild(newFavicon);
-  }
 
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -76,6 +69,7 @@ const Register = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
+      <Favicon />
       <Container maxWidth={"xs"}>
         <CssBaseline />
         <Box
