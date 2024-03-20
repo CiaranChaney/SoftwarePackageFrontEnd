@@ -9,6 +9,7 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
+import Favicon from "../components/Favicon";
 
 interface Library {
   libraryId: number;
@@ -22,17 +23,21 @@ const darkTheme = createTheme({
 });
 
 const DeleteLibraryPage: React.FC = () => {
+  document.title = "Delete Library";
+
   const { libraryId } = useParams<{ libraryId: string }>();
   const [library, setLibrary] = useState<Library | null>(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const token = localStorage.getItem("token");
+      if (token) {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+      }
     }
 
     console.log("Library ID:", libraryId);
@@ -65,6 +70,7 @@ const DeleteLibraryPage: React.FC = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
+      <Favicon />
       <CssBaseline />
       <Container maxWidth="md" style={{ marginTop: 40 }}>
         <Typography variant="h4" gutterBottom>

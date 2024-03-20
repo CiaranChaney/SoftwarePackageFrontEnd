@@ -12,6 +12,7 @@ import {
 import NavBar from "../components/NavBar";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import Favicon from "../components/Favicon";
 
 const darkTheme = createTheme({
   palette: {
@@ -20,8 +21,10 @@ const darkTheme = createTheme({
 });
 
 const EditLibrary: React.FC = () => {
+  document.title = "Edit Library";
+
   const [success, setSuccess] = useState(false);
-  const [libraryData, setLibraryData] = useState<Library | null>(null); // Rename to avoid conflict with libraryId
+  const [libraryData, setLibraryData] = useState<Library | null>(null);
   const { libraryId } = useParams<{ libraryId: string }>();
   const navigate = useNavigate();
 
@@ -82,6 +85,7 @@ const EditLibrary: React.FC = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
+      <Favicon />
       <CssBaseline />
       <NavBar />
       <Container maxWidth="md" sx={{ marginTop: 4 }}>
