@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { Grid, TextField } from "@mui/material";
+import {Button, Grid, TextField} from "@mui/material";
 import axios from "axios";
 import moment from "moment";
 import { jwtDecode } from "jwt-decode";
 import LibraryUpload from "./LibraryUpload";
+import "../css/LibraryUpload.css";
 
 const token = localStorage.getItem("token");
 const decodedToken = token && jwtDecode(token);
@@ -33,9 +34,41 @@ const LibraryDataTable = () => {
       });
   }, []);
 
-  const handleLibraryUploadChange = (event) => {
-    setLibraryUpload(event.target.files[0]);
+  const handleNameSearch = () => {
+    axios
+        .get("https://ciaranchaney.com:443/searchLibrary", {
+          params: { query: searchQuery },
+        })
+        .then((response) => {
+          if (Array.isArray(response.data)) {
+            setListLibrary(response.data);
+          } else {
+            console.error("Invalid response data format");
+          }
+        })
+        .catch((error) => {
+          console.error("There was an error!", error);
+        });
   };
+
+  const handleHashSearch = () => {
+    axios
+        .get("https://ciaranchaney.com:443/searchByHash", {
+          params: { query: hashSearchQuery },
+        })
+        .then((response) => {
+          if (response.data) {
+            setListLibrary([response.data]);
+          } else {
+            console.error("No library found with that hash");
+            setListLibrary([]);
+          }
+        })
+        .catch((error) => {
+          console.error("There was an error!", error);
+        });
+  };
+
 
   const columns = [
     { field: "libraryId", headerName: "Library ID", width: 100 },
@@ -98,56 +131,63 @@ const LibraryDataTable = () => {
     hash: library.hash ? library.hash.hashValue : "",
   }));
 
-  const filteredRows = rows.filter(
-    (row) =>
-      Object.values(row).some(
-        (value) =>
-          typeof value === "string" &&
-          value.toLowerCase().includes(searchQuery.toLowerCase()),
-      ) && row.hash.toLowerCase().includes(hashSearchQuery.toLowerCase()),
-  );
 
   return (
-    <div>
-      <Grid container spacing={3} justifyContent="center">
-        <Grid item xs={12} sm={6}>
-          {" "}
-          {}
-          <TextField
-            label="Search Library Name"
-            value={searchQuery}
-            onChange={(event) => setSearchQuery(event.target.value)}
-            variant="outlined"
-            fullWidth
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            label="Search by Hash"
-            value={hashSearchQuery}
-            onChange={(event) => setHashSearchQuery(event.target.value)}
-            variant="outlined"
-            fullWidth
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <LibraryUpload
-            onFileUpload={(hashValue) => setHashSearchQuery(hashValue)}
-          />
-        </Grid>
-      </Grid>
+      <div>
+        <Grid container spacing={3} justifyContent="center">
+          <Grid item xs={12} sm={6} container justifyContent="center">
+            <LibraryUpload
+                onFileUpload={(hashValue) => setHashSearchQuery(hashValue)}
+            />
+          </Grid>
 
-      <div style={{ height: 750, width: "100%" }}>
-        <DataGrid
-          rows={filteredRows}
-          columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5, 10, 20]}
-        />
+          <Grid item xs={12} sm={6}>
+            <TextField
+                label="Search by Hash"
+                value={hashSearchQuery}
+                onChange={(event) => setHashSearchQuery(event.target.value)}
+                variant="outlined"
+                fullWidth
+                margin="normal"
+            />
+            <Button
+                variant="contained"
+                className="search-button"
+                onClick={handleHashSearch}
+            >
+              Search by Hash
+            </Button>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <TextField
+                label="Search by Library Name"
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+                variant="outlined"
+                fullWidth
+                margin="normal"
+            />
+            <Button
+                variant="contained"
+                className="search-button"
+                onClick={handleNameSearch}
+            >
+              Search by Name
+            </Button>
+          </Grid>
+
+        </Grid>
+
+        <div style={{ height: 750, width: "100%" }}>
+          <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={5}
+              rowsPerPageOptions={[5, 10, 20]}
+          />
+        </div>
       </div>
-    </div>
   );
 };
 
