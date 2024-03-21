@@ -6,6 +6,11 @@ import moment from "moment";
 import { jwtDecode } from "jwt-decode";
 import LibraryUpload from "./LibraryUpload";
 import "../css/LibraryUpload.css";
+import ReactGA from "react-ga4";
+
+ReactGA.initialize('G-QZSYBWE1M5');
+
+ReactGA.send({ hitType: 'pageview', page: window.location.pathname });
 
 const token = localStorage.getItem("token");
 const decodedToken = token && jwtDecode(token);
