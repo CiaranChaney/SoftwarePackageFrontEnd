@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../css/LibraryUpload.css"; // Import your CSS file for styling
+import "../css/LibraryUpload.css";
 
 const LibraryUpload = ({ onFileUpload }) => {
   const [file, setFile] = useState(null);

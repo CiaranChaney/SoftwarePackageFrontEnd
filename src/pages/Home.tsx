@@ -4,14 +4,14 @@ import Favicon from "../components/Favicon";
 const Home = () => {
     document.title = "Library Data Repository";
 
-  return (
+    return (
 
-    <div>
-        <Favicon />
-      <NavBar />
-      <h1>Home</h1>
-    </div>
-  );
+        <div>
+            <Favicon />
+            <NavBar />
+            <h1>Home</h1>
+        </div>
+    );
 };
 
 export default Home;
