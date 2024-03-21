@@ -12,6 +12,8 @@ ReactGA.initialize('G-QZSYBWE1M5');
 
 ReactGA.send({ hitType: 'pageview', page: "/library"});
 
+declare var localStorage: any;
+
 const token = localStorage.getItem("token");
 const decodedToken = token && jwtDecode(token);
 const isAdmin =
@@ -19,25 +21,41 @@ const isAdmin =
 
 const LibraryDataTable = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [hashSearchQuery, setHashSearchQuery] = React.useState("");
-  const [libraryUpload, setLibraryUpload] = useState("");
-
-  const [listLibrary, setListLibrary] = useState<Library[]>([]);
+  const [hashSearchQuery, setHashSearchQuery] = useState("");
+  const [listLibrary, setListLibrary] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [pageSize, setPageSize] = useState(50);
+  const [totalRows, setTotalRows] = useState(0);
 
   useEffect(() => {
+    fetchLibraryData();
+  }, [currentPage, pageSize]);
+
+  const fetchLibraryData = () => {
     axios
-      .get("https://ciaranchaney.com:443/getLibraries")
-      .then((response) => {
-        if (Array.isArray(response.data)) {
-          setListLibrary(response.data);
-        } else {
-          console.error("Response data is not an array");
-        }
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
-      });
-  }, []);
+        .get("https://ciaranchaney.com:443/paginatedLibraries", {
+          params: {
+            pageNo: currentPage,
+            pageSize: pageSize
+          },
+        })
+        .then((response) => {
+          if (Array.isArray(response.data.content)) {
+            setListLibrary(response.data.content);
+            setTotalRows(response.data.totalElements);
+          } else {
+            console.error("Response data is not an array");
+          }
+        })
+        .catch((error) => {
+          console.error("There was an error!", error);
+        });
+  };
+
+  const handlePaginationModelChange = (newModel: { page: React.SetStateAction<number>; pageSize: React.SetStateAction<number>; }) => {
+    setCurrentPage(newModel.page);
+    setPageSize(newModel.pageSize);
+  };
 
   const handleNameSearch = () => {
     axios
@@ -184,13 +202,19 @@ const LibraryDataTable = () => {
 
         </Grid>
 
-        <div style={{ height: 750, width: "100%" }}>
+        <div style={{height: 750, width: "100%"}}>
           <DataGrid
               rows={rows}
               columns={columns}
-              pageSize={5}
-              rowsPerPageOptions={[5, 10, 20]}
+              pagination = {true}
+              rowCount={totalRows}
+              pageSizeOptions = {[25, 50, 100]}
+              initialState={{ pagination: { paginationModel: { page: 0, pageSize: 100 } } }}
+              paginationMode="server"
+              paginationModel={{ page: currentPage, pageSize }}
+              onPaginationModelChange={handlePaginationModelChange}
           />
+
         </div>
       </div>
   );
