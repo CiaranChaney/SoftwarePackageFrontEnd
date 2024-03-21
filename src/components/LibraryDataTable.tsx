@@ -10,7 +10,7 @@ import ReactGA from "react-ga4";
 
 ReactGA.initialize('G-QZSYBWE1M5');
 
-ReactGA.send({ hitType: 'pageview', page: window.location.pathname });
+ReactGA.send({ hitType: 'pageview', page: "/library"});
 
 const token = localStorage.getItem("token");
 const decodedToken = token && jwtDecode(token);

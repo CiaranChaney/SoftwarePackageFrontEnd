@@ -7,7 +7,7 @@ ReactGA.initialize('G-QZSYBWE1M5');
 const Home = () => {
     document.title = "Library Data Repository";
 
-    ReactGA.send({ hitType: 'pageview', page: window.location.pathname });
+    ReactGA.send({ hitType: 'pageview', page: "/home" });
 
     return (
 
