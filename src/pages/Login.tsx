@@ -15,6 +15,8 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
 import Favicon from "../components/Favicon";
+import 'react-toastify/dist/ReactToastify.css';
+import {toast, ToastContainer} from "react-toastify";
 
 const darkTheme = createTheme({
   palette: {
@@ -41,17 +43,17 @@ const Login = () => {
       if (response.data.token !== undefined) {
         const token = response.data.token;
         localStorage.setItem("token", token);
+        localStorage.setItem("toastMessage", "Logged in Succefssfully");
         console.log("Logged in successfully");
         navigate("/library");
         window.location.reload();
         console.log("Redirecting to library...");
       } else {
         console.log("Invalid username or password");
-        setErrorMessage("Invalid username or password");
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        setErrorMessage("Invalid username or password");
+        toast.error("Invalid username or password")
       }
       console.error("Error logging in:", error);
     }
@@ -59,6 +61,7 @@ const Login = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
+      <ToastContainer />
       <Favicon />
       <Container maxWidth={"xs"}>
         <CssBaseline />

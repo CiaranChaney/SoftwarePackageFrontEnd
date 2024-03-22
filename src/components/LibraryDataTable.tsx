@@ -7,6 +7,8 @@ import { jwtDecode } from "jwt-decode";
 import LibraryUpload from "./LibraryUpload";
 import "../css/LibraryUpload.css";
 import ReactGA from "react-ga4";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactGA.initialize('G-QZSYBWE1M5');
 
@@ -28,6 +30,15 @@ const LibraryDataTable = () => {
   const [totalRows, setTotalRows] = useState(0);
 
   useEffect(() => {
+    const toastMessage = localStorage.getItem("toastMessage");
+    if (toastMessage) {
+      toast.success(toastMessage, {
+        onClose: () => {
+          localStorage.removeItem("toastMessage");
+        }
+      });
+    }
+
     fetchLibraryData();
   }, [currentPage, pageSize]);
 
