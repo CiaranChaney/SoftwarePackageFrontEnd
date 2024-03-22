@@ -9,6 +9,7 @@ import "../css/LibraryUpload.css";
 import ReactGA from "react-ga4";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import {ThreeCircles} from "react-loader-spinner";
 
 ReactGA.initialize('G-QZSYBWE1M5');
 
@@ -28,6 +29,7 @@ const LibraryDataTable = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [pageSize, setPageSize] = useState(50);
   const [totalRows, setTotalRows] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const toastMessage = localStorage.getItem("toastMessage");
@@ -54,6 +56,7 @@ const LibraryDataTable = () => {
           if (Array.isArray(response.data.content)) {
             setListLibrary(response.data.content);
             setTotalRows(response.data.totalElements);
+            setLoading(false)
           } else {
             console.error("Response data is not an array");
           }
@@ -213,18 +216,30 @@ const LibraryDataTable = () => {
 
         </Grid>
 
-        <div style={{height: 750, width: "100%"}}>
-          <DataGrid
-              rows={rows}
-              columns={columns}
-              pagination = {true}
-              rowCount={totalRows}
-              pageSizeOptions = {[25, 50, 100]}
-              initialState={{ pagination: { paginationModel: { page: 0, pageSize: 100 } } }}
-              paginationMode="server"
-              paginationModel={{ page: currentPage, pageSize }}
-              onPaginationModelChange={handlePaginationModelChange}
-          />
+        <div style={{height: 750, width: "100%", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          {loading ? (
+              <ThreeCircles
+                  visible={true}
+                  height="100"
+                  width="100"
+                  color="#ffffffff"
+                  ariaLabel="three-circles-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+              />
+          ) : (
+              <DataGrid
+                  rows={rows}
+                  columns={columns}
+                  pagination={true}
+                  rowCount={totalRows}
+                  pageSizeOptions={[25, 50, 100]}
+                  initialState={{pagination: {paginationModel: {page: 0, pageSize: 100}}}}
+                  paginationMode="server"
+                  paginationModel={{page: currentPage, pageSize}}
+                  onPaginationModelChange={handlePaginationModelChange}
+              />
+          )}
 
         </div>
       </div>
