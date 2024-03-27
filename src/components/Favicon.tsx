@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const LibraryDataTable = () => {
+const Favicon = () => {
     useEffect(() => {
         const favicon = document.querySelector('link[rel="icon"]');
         if (!favicon) {
@@ -16,4 +16,4 @@ const LibraryDataTable = () => {
     return null;
 }
 
-export default LibraryDataTable;
+export default Favicon;

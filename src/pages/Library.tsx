@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import NavBar from "../components/NavBar";
 import Favicon from "../components/Favicon";
+import LibraryDataTable from "../components/LibraryDataTable";
 
 const darkTheme = createTheme({
   palette: {
@@ -23,18 +24,17 @@ const LibraryPage: React.FC = () => {
   const token = localStorage.getItem("token");
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Favicon />
-      <CssBaseline /> {}
-      <NavBar />
-      <Container maxWidth="md" style={{ marginTop: 40 }}>
-        <Typography variant="h2" align="center" gutterBottom>
-          Library Hash Repository
-        </Typography>
+      <div>
+          <Favicon/>
+          <div className={"col"}>
+              <NavBar></NavBar>
+          </div>
 
-        <DataTable />
-      </Container>
-    </ThemeProvider>
+          <LibraryDataTable></LibraryDataTable>
+
+
+      </div>
+
   );
 };
 

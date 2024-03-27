@@ -1,14 +1,4 @@
 import React from "react";
-import {
-  AppBar,
-  Button,
-  Container,
-  createTheme,
-  Grid,
-  ThemeProvider,
-  Toolbar,
-  Typography,
-} from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import LogOut from "./LogOut";
 import UserInfo from "./UserInfo";
@@ -21,86 +11,57 @@ const NavBar: React.FC = () => {
 
 
   return (
-        <div className={"container-fluid"}>
-          <div className={"row"}>
-            <div className={"col-6 col-lg-6"}>
-              <div className={"row"}>
-                <div className={"col"}>
-                  <h4>Library Hash Repository</h4>
-                </div>
-              </div>
-            </div>
-
-            <div className={"col-6 col-lg-6 d-flex justify-content-end "}>
-              <div className={"row"}>
-                <div className={"col-9 col-lg-4 d-flex justify-content-end"}>
-                  {location.pathname !== "/library" ? (
-
-                      <Button
-                          variant="contained"
-                          color="inherit"
-                          component={Link}
-                          to="/library"
-                      >
-                        Libraries
-                      </Button>
-
-                  ) : (
-                      <Button
-                          variant="contained"
-                          color="inherit"
-                          component={Link}
-                          to="/"
-                      >
-                        Home
-                      </Button>
-                  )}
-                </div>
-
-                <div className={"col-3 col-lg-3 d-flex justify-content-end "}>
-
-                  {token == null ? (
-
-                      <Button
-                          variant="contained"
-                          color="inherit"
-                          onClick={() => (window.location.href = "/login")}
-                      >
-                        Login
-                      </Button>
-
-                  ) : (
-
-                      <LogOut token={token}>
-                        <Button
-                            variant="contained"
-                            color="inherit"
-                            style={{color: "inherit"}}
-                        >
-                          Logout
-                        </Button>
-                      </LogOut>
-
-                  )}
-                </div>
-
-                <div className={"col-12 col-lg-5 d-flex justify-content-end"}>
-                  {token == null ? (
-                      <Button
-                          variant="contained"
-                          color="inherit"
-                          onClick={() => (window.location.href = "/register")}
-                      >
-                        Register
-                      </Button>
-                  ) : (
-                      <UserInfo token={token}/>
-                  )}
-                </div>
+      <div className={"container-fluid"}>
+        <div className={"row"}>
+          <div className={"navCol col-lg-6 mb-3"}>
+            <div className={"row"}>
+              <div className={"col"}>
+                <h4>Library Hash Repository</h4>
               </div>
             </div>
           </div>
+
+          <div className={"navCol col-lg-6 d-flex justify-content-end mb-3"}>
+            <div className={"row"}>
+              <div className={"col-9 col-lg-4 col-sm-6 d-flex justify-content-end mb-2 mb-lg-0"}>
+                {location.pathname !== "/library" ? (
+                    <a className={"btn btn-light btn-lg p-2"} href="/library" role="button">
+                      Library
+                    </a>
+                ) : (
+                    <a className={"btn btn-light btn-lg p-2"} href="/" role="button">
+                      Home
+                    </a>
+                )}
+              </div>
+
+              <div className={"col-3 col-lg-3 col-sm-6 d-flex justify-content-end mb-2 mb-lg-0"}>
+                {token == null ? (
+                    <a className={"btn btn-light btn-lg p-2"} href="/login" role="button">
+                      Login
+                    </a>
+                ) : (
+                    <LogOut token={token}></LogOut>
+                )}
+              </div>
+
+              {token == null ? (
+                  <div className={"col-4 col-lg-4 col-sm-6 d-flex justify-content-end mb-2 mb-lg-0"}>
+                    <a className={"btn btn-light btn-lg p-2"} href="/register" role="button">
+                      Register
+                    </a>
+                  </div>
+              ) : (
+                  <div className={"col-12 col-lg-5 d-flex justify-content-end"}>
+                    <UserInfo token={token}/>
+                  </div>
+              )}
+            </div>
+          </div>
         </div>
+      </div>
+
+
   );
 }
 

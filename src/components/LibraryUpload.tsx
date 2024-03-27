@@ -1,64 +1,74 @@
-import React, {useRef, useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import "../css/LibraryUpload.css";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-
-const resolveAfter3Seconds = new Promise((resolve) => { setTimeout ( resolve, 3000 ); } );
-
 const LibraryUpload = ({ onFileUpload }) => {
-  const [file, setFile] = useState(null);
+    const [file, setFile] = useState(null);
 
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-  };
+    const handleFileChange = (event) => {
+        setFile(event.target.files[0]);
+    };
 
-  const handleUpload = async () => {
-    if (!file) return;
+    const handleUpload = async () => {
+        if (!file) {
+            toast.error("Please select a file to upload.");
+            return;
+        }
 
-    const formData = new FormData();
-    formData.append("file", file);
+        const formData = new FormData();
+        formData.append("file", file);
 
-    const uploadPromise = axios.post(
-        "https://ciaranchaney.com:443/upload",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        },
+        try {
+            toast.info("Uploading file...");
+
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            const response = await axios.post(
+                "https://ciaranchaney.com:443/upload",
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                }
+            );
+
+            const hashValue = response.data;
+
+            onFileUpload(hashValue);
+
+            toast.success("File uploaded successfully!");
+            console.log("File uploaded successfully:", hashValue);
+        } catch (error) {
+            console.error("Error uploading file:", error);
+            toast.error("Error uploading file!");
+        }
+    };
+
+
+    return (
+        <div className="col">
+                <div className="mb-3">
+                    <label htmlFor="formFile" className="form-label"></label>
+                    <input
+                        className="form-control"
+                        type="file"
+                        id="formFile"
+                        onChange={handleFileChange}
+                    />
+                </div>
+                <div className="col">
+                    <button
+                        className="btn btn-dark btn-lg"
+                        onClick={handleUpload}
+                        type="button"
+                    >
+                        Upload File
+                    </button>
+                </div>
+        </div>
     );
-
-    try {
-      const response = await toast.promise(
-          uploadPromise,
-          {
-            pending: "Uploading file...",
-            success: "File uploaded successfully!",
-            error: "Error uploading file!",
-          }
-      );
-
-      const hashValue = response.data;
-
-      onFileUpload(hashValue);
-
-      console.log("File uploaded successfully:", hashValue);
-    } catch (error) {
-      console.error("Error uploading file:", error);
-    }
-  };
-
-  return (
-    <div className="upload-container">
-      <ToastContainer />
-      <input type="file" onChange={handleFileChange} className="file-input" />
-      <button onClick={handleUpload} className="upload-button">
-        Upload
-      </button>
-    </div>
-  );
 };
 
 export default LibraryUpload;

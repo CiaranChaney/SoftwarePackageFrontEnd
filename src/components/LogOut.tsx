@@ -1,16 +1,10 @@
 import React from "react";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
-import { Button } from "@mui/material";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-interface JwtPayload {
-  username: string;
-}
-
 const LogOut: React.FC<{ token: string }> = ({ token }) => {
-  const decodedToken = jwtDecode(token);
 
   const handleLogout = async () => {
     try {
@@ -36,10 +30,13 @@ const LogOut: React.FC<{ token: string }> = ({ token }) => {
   };
 
   return (
-    <Button variant="contained" onClick={handleLogout} color="inherit">
+    <a className={"btn btn-light btn-lg"}
+       onClick={handleLogout}
+       role="button">
       Logout
-    </Button>
-  );
+    </a>
+)
+  ;
 };
 
 export default LogOut;

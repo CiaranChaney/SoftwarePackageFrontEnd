@@ -5,11 +5,11 @@ import axios from "axios";
 import moment from "moment";
 import { jwtDecode } from "jwt-decode";
 import LibraryUpload from "./LibraryUpload";
-import "../css/LibraryUpload.css";
 import ReactGA from "react-ga4";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {ThreeCircles} from "react-loader-spinner";
+import 'bootstrap/dist/css/bootstrap.css';
 
 ReactGA.initialize('G-QZSYBWE1M5');
 
@@ -124,7 +124,7 @@ const LibraryDataTable = () => {
       renderCell: (params) => (
         <div>
           {isAdmin && (
-            <a
+            <a className={"btn btn-warning"}
               href={`/editlibrary/${params.row.libraryId}`}
               style={{ color: "#fff" }}
             >
@@ -144,10 +144,11 @@ const LibraryDataTable = () => {
       renderCell: (params) => (
         <div>
           {isAdmin && (
-            <a
+            <a className={"btn btn-danger"}
               href={`/deletelibrary/${params.row.libraryId}`}
               style={{ color: "#fff" }}
             >
+
               Delete
             </a>
           )}
@@ -171,78 +172,88 @@ const LibraryDataTable = () => {
 
   return (
       <div>
-        <Grid container spacing={3} justifyContent="center">
-          <Grid item xs={12} sm={6} container justifyContent="center">
-            <LibraryUpload
-                onFileUpload={(hashValue) => setHashSearchQuery(hashValue)}
-            />
-          </Grid>
+        <div className={"col"}>
+          <ToastContainer/>
+        </div>
 
-          <Grid item xs={12} sm={6}>
-            <TextField
-                label="Search by Hash"
-                value={hashSearchQuery}
-                onChange={(event) => setHashSearchQuery(event.target.value)}
-                variant="outlined"
-                fullWidth
-                margin="normal"
-            />
-            <Button
-                variant="contained"
-                className="search-button"
-                onClick={handleHashSearch}
-            >
-              Search by Hash
-            </Button>
-          </Grid>
+        <div className={"row"}>
+          <div className={"container-fluid"}>
+            <div className={"row"}>
+              <div className={"col-lg-4 col-md-6 mb-3"}>
+                <TextField
+                    label="Search by Library Name"
+                    value={searchQuery}
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                    variant="outlined"
+                    fullWidth
+                    margin="normal"
+                />
+                <a className={"btn btn-dark btn-lg mt-2"}
+                   onClick={handleNameSearch}
+                   role="button">
+                  Search by Name
+                </a>
+              </div>
 
-          <Grid item xs={12} sm={6}>
-            <TextField
-                label="Search by Library Name"
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                variant="outlined"
-                fullWidth
-                margin="normal"
-            />
-            <Button
-                variant="contained"
-                className="search-button"
-                onClick={handleNameSearch}
-            >
-              Search by Name
-            </Button>
-          </Grid>
+              <div className={"col-lg-4 col-md-6 mb-3"}>
+                <LibraryUpload
+                    onFileUpload={(hashValue) => setHashSearchQuery(hashValue)}
+                />
+              </div>
 
-        </Grid>
+              <div className={"col-lg-4 col-md-12 mb-3"}>
+                <TextField
+                    label="Search by Hash"
+                    value={hashSearchQuery}
+                    onChange={(event) => setHashSearchQuery(event.target.value)}
+                    variant="outlined"
+                    fullWidth
+                    margin="normal"
+                />
+                <a className={"btn btn-dark btn-lg mt-2"}
+                   onClick={handleHashSearch}
+                   role="button">
+                  Search by Hash
+                </a>
+              </div>
+            </div>
 
-        <div style={{height: 750, width: "100%", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-          {loading ? (
-              <ThreeCircles
-                  visible={true}
-                  height="100"
-                  width="100"
-                  color="#ffffffff"
-                  ariaLabel="three-circles-loading"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-              />
-          ) : (
-              <DataGrid
-                  rows={rows}
-                  columns={columns}
-                  pagination={true}
-                  rowCount={totalRows}
-                  pageSizeOptions={[25, 50, 100]}
-                  initialState={{pagination: {paginationModel: {page: 0, pageSize: 100}}}}
-                  paginationMode="server"
-                  paginationModel={{page: currentPage, pageSize}}
-                  onPaginationModelChange={handlePaginationModelChange}
-              />
-          )}
-
+            <div className={"row"}>
+              <div className={"col"}>
+                <div className={"mt-3 mb-3"}>
+                  {loading ? (
+                      <ThreeCircles
+                          visible={true}
+                          height="100"
+                          width="100"
+                          color="#ffffffff"
+                          ariaLabel="three-circles-loading"
+                          wrapperStyle={{}}
+                          wrapperClass=""
+                      />
+                  ) : (
+                      <div className={"col-10 mx-auto"}>
+                        <DataGrid
+                            rows={rows}
+                            columns={columns}
+                            pagination={true}
+                            rowCount={totalRows}
+                            pageSizeOptions={[25, 50, 100]}
+                            initialState={{pagination: {paginationModel: {page: 0, pageSize: 100}}}}
+                            paginationMode="server"
+                            paginationModel={{page: currentPage, pageSize}}
+                            onPaginationModelChange={handlePaginationModelChange}
+                        />
+                      </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+
   );
 };
 
