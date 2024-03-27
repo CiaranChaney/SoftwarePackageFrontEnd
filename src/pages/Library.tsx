@@ -11,6 +11,7 @@ import {
 import NavBar from "../components/NavBar";
 import Favicon from "../components/Favicon";
 import LibraryDataTable from "../components/LibraryDataTable";
+import Footer from "../components/Footer";
 
 const darkTheme = createTheme({
   palette: {
@@ -31,6 +32,8 @@ const LibraryPage: React.FC = () => {
           </div>
 
           <LibraryDataTable></LibraryDataTable>
+
+          <Footer />
 
 
       </div>
