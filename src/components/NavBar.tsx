@@ -26,8 +26,7 @@ const NavBar: React.FC = () => {
           <div className={"navCol col-lg-6 d-flex justify-content-end mb-3"}>
             <div className={"row"}>
               <div className={"col-9 col-lg-4 col-sm-6 d-flex justify-content-end mb-2 mb-lg-0"}>
-                {logPath}
-                {location.pathname === "/library" ? (
+                {location.pathname.startsWith("/library") ? (
                     <a className={"btn btn-light btn-lg p-2"} href="/" role="button">
                       Home
                     </a>
@@ -36,6 +35,7 @@ const NavBar: React.FC = () => {
                       Libraries
                     </a>
                 )}
+
               </div>
 
 
