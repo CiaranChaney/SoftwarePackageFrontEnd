@@ -12,12 +12,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import LogOut from "./LogOut";
 import UserInfo from "./UserInfo";
-
-const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-  },
-});
+import 'bootstrap/dist/css/bootstrap.css';
 
 const NavBar: React.FC = () => {
   const location = useLocation();
@@ -27,75 +22,87 @@ const NavBar: React.FC = () => {
   const showLibraryButton = location.pathname !== "/library";
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <AppBar position="static">
-        <Toolbar>
-          <Container maxWidth="xs">
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Library Hash Repository
-            </Typography>
-          </Container>
+        <div className={"container-fluid"}>
+          <div className={"row"}>
+            <div className={"col-12 col-lg-6"}>
+              <div className={"row"}>
+                <div className={"col"}>
+                  <h4>Library Hash Repository</h4>
+                </div>
+              </div>
+            </div>
 
-          <Grid
-            container
-            spacing={2}
-            alignItems="center"
-            justifyContent="flex-end"
-            style={{ padding: "10px" }}
-          >
-            {showLibraryButton && (
-              <Grid item>
-                <Button
-                  variant="contained"
-                  color="inherit"
-                  component={Link}
-                  to="/library"
-                >
-                  Libraries
-                </Button>
-              </Grid>
-            )}
-            {token == null && (
-              <Grid item>
-                <Button
-                  variant="contained"
-                  color="inherit"
-                  onClick={() => (window.location.href = "/login")}
-                >
-                  Login
-                </Button>
-              </Grid>
-            )}
-            {token == null && (
-              <Grid item>
-                <Button
-                  variant="contained"
-                  color="inherit"
-                  onClick={() => (window.location.href = "/register")}
-                >
-                  Register
-                </Button>
-              </Grid>
-            )}
-            <Grid item>
-              {token && (
-                <LogOut token={token}>
-                  <Button
-                    variant="contained"
-                    color="inherit"
-                    style={{ color: "inherit" }} // Set color to inherit
-                  >
-                    Logout
-                  </Button>
-                </LogOut>
-              )}
-            </Grid>
-            <Grid item>{token && <UserInfo token={token} />}</Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
-    </ThemeProvider>
+            <div className={"col-12 col-lg-6 d-flex justify-content-end "}>
+              <div className={"row"}>
+                <div className={"col-6 col-lg-4 d-flex justify-content-end"}>
+                  {location.pathname !== "/library" ? (
+
+                      <Button
+                          variant="contained"
+                          color="inherit"
+                          component={Link}
+                          to="/library"
+                      >
+                        Libraries
+                      </Button>
+
+                  ) : (
+                      <Button
+                          variant="contained"
+                          color="inherit"
+                          component={Link}
+                          to="/"
+                      >
+                        Home
+                      </Button>
+                  )}
+                </div>
+
+                <div className={"col-6 col-lg-3 d-flex justify-content-end "}>
+
+                  {token == null ? (
+
+                      <Button
+                          variant="contained"
+                          color="inherit"
+                          onClick={() => (window.location.href = "/login")}
+                      >
+                        Login
+                      </Button>
+
+                  ) : (
+
+                      <LogOut token={token}>
+                        <Button
+                            variant="contained"
+                            color="inherit"
+                            style={{color: "inherit"}}
+                        >
+                          Logout
+                        </Button>
+                      </LogOut>
+
+                  )}
+                </div>
+
+                <div className={"col-12 col-lg-5 d-flex justify-content-end"}>
+                  {token == null ? (
+                      <Button
+                          variant="contained"
+                          color="inherit"
+                          onClick={() => (window.location.href = "/register")}
+                      >
+                        Register
+                      </Button>
+                  ) : (
+                      <UserInfo token={token}/>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
   );
-};
+}
 
 export default NavBar;

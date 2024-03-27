@@ -1,0 +1,12 @@
+// Import all of Bootstrap's CSS
+@import "bootstrap/scss/bootstrap";
+
+
+[class*="col"] {
+  padding: 1rem;
+  background-color: #020202;
+  color: #fff;
+  //border: 1px solid #fff;
+
+ }
+
