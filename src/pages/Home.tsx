@@ -1,6 +1,9 @@
 import NavBar from "../components/NavBar";
 import Favicon from "../components/Favicon";
 import ReactGA from "react-ga4";
+import 'bootstrap/dist/css/bootstrap.css';
+import "../scss/styles.scss";
+
 
 ReactGA.initialize('G-QZSYBWE1M5');
 
@@ -12,8 +15,10 @@ const Home = () => {
     return (
 
         <div>
-            <Favicon />
-            <NavBar />
+            <Favicon/>
+            <NavBar/>
+
+
             <h1>Home</h1>
         </div>
     );
