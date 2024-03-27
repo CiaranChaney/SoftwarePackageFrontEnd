@@ -19,12 +19,11 @@ const NavBar: React.FC = () => {
 
   const token = localStorage.getItem("token");
 
-  const showLibraryButton = location.pathname !== "/library";
 
   return (
         <div className={"container-fluid"}>
           <div className={"row"}>
-            <div className={"col-12 col-lg-6"}>
+            <div className={"col-6 col-lg-6"}>
               <div className={"row"}>
                 <div className={"col"}>
                   <h4>Library Hash Repository</h4>
@@ -32,9 +31,9 @@ const NavBar: React.FC = () => {
               </div>
             </div>
 
-            <div className={"col-12 col-lg-6 d-flex justify-content-end "}>
+            <div className={"col-6 col-lg-6 d-flex justify-content-end "}>
               <div className={"row"}>
-                <div className={"col-6 col-lg-4 d-flex justify-content-end"}>
+                <div className={"col-9 col-lg-4 d-flex justify-content-end"}>
                   {location.pathname !== "/library" ? (
 
                       <Button
@@ -58,7 +57,7 @@ const NavBar: React.FC = () => {
                   )}
                 </div>
 
-                <div className={"col-6 col-lg-3 d-flex justify-content-end "}>
+                <div className={"col-3 col-lg-3 d-flex justify-content-end "}>
 
                   {token == null ? (
 
