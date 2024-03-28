@@ -1,11 +1,13 @@
 import React from "react";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import Favicon from "../components/Favicon";
 
 const Privacy = () => {
 
     return (
         <div>
+            <Favicon />
             <NavBar/>
 
             <div className={"container"}>
