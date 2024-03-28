@@ -9,6 +9,7 @@ import EditLibrary from "./pages/EditLibrary";
 import DeleteLibrary from "./pages/DeleteLibrary";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+import Contact from "./pages/Contact";
 
 
 
@@ -37,6 +38,7 @@ function App() {
         </Route>
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </>
   );
