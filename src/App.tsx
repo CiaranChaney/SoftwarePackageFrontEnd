@@ -1,8 +1,5 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import ReactGA from 'react-ga4'
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -10,6 +7,8 @@ import Library from "./pages/Library";
 import SecureRoute from "./components/SecureRoute";
 import EditLibrary from "./pages/EditLibrary";
 import DeleteLibrary from "./pages/DeleteLibrary";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
 
 
 
@@ -36,6 +35,8 @@ function App() {
             element={<DeleteLibrary />}
           />
         </Route>
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy" element={<Privacy />} />
       </Routes>
     </>
   );

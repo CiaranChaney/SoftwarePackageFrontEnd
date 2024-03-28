@@ -4,8 +4,6 @@ import LogOut from "./LogOut";
 import UserInfo from "./UserInfo";
 import 'bootstrap/dist/css/bootstrap.css';
 
-const logPath = console.log(location.pathname);
-
 const NavBar: React.FC = () => {
   const location = useLocation();
 
