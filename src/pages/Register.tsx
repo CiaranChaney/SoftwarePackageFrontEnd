@@ -11,10 +11,11 @@ import {
   Typography,
 } from "@mui/material";
 import { LockOutlined } from "@mui/icons-material";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Favicon from "../components/Favicon";
+import {toast, ToastContainer} from "react-toastify";
 
 const darkTheme = createTheme({
   palette: {
@@ -63,13 +64,19 @@ const Register = () => {
         console.log("Invalid registration");
       }
     } catch (error) {
-      console.error("Error logging in:", error);
+      if (error.response && error.response.status === 500) {
+        console.log("Invalid registration");
+        toast.error("User already exists with that email or username. Please try again.")
+      } else {
+        console.error("Error logging in:", error);
+      }
     }
   };
 
   return (
     <ThemeProvider theme={darkTheme}>
       <Favicon />
+      <ToastContainer />
       <Container maxWidth={"xs"}>
         <CssBaseline />
         <Box
