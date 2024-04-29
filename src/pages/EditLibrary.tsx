@@ -14,16 +14,26 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Favicon from "../components/Favicon";
 
+
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
   },
 });
 
+interface Library {
+  libraryId: number;
+  libraryName: string;
+  version: string;
+  createdAt: string;
+  hash: {
+    hashValue: string;
+  };
+}
+
 const EditLibrary: React.FC = () => {
   document.title = "Edit Library";
 
-  const [success, setSuccess] = useState(false);
   const [libraryData, setLibraryData] = useState<Library | null>(null);
   const { libraryId } = useParams<{ libraryId: string }>();
   const navigate = useNavigate();
@@ -75,7 +85,6 @@ const EditLibrary: React.FC = () => {
         },
       );
 
-      setSuccess(true);
       navigate("/library");
       window.location.reload();
     } catch (error) {

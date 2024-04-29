@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import {useLocation } from "react-router-dom";
 import LogOut from "./LogOut";
 import UserInfo from "./UserInfo";
 import 'bootstrap/dist/css/bootstrap.css';

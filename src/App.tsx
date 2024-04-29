@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -22,16 +21,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/library" element={<Library />} />
-        <Route exact path="/editlibrary/:libraryId" element={<SecureRoute />}>
+        <Route path="/editlibrary/:libraryId" element={<SecureRoute />}>
           <Route
-            exact
             path="/editlibrary/:libraryId"
             element={<EditLibrary />}
           />
         </Route>
-        <Route exact path="/deleteLibrary/:libraryId" element={<SecureRoute />}>
+        <Route path="/deleteLibrary/:libraryId" element={<SecureRoute />}>
           <Route
-            exact
             path="/deleteLibrary/:libraryId"
             element={<DeleteLibrary />}
           />

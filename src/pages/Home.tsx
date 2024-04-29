@@ -3,7 +3,6 @@ import NavBar from "../components/NavBar";
 import Favicon from "../components/Favicon";
 import 'bootstrap/dist/css/bootstrap.css';
 import "../scss/styles.scss";
-import React from "react";
 import Footer from "../components/Footer";
 
 ReactGA.initialize('G-QZSYBWE1M5');

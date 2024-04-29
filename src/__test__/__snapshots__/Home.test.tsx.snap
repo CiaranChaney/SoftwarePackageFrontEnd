@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePage renders correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="container-fluid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="navCol col-lg-6 mb-3"
+        >
+          <div
+            class="row"
+          >
+            <div
+              class="col"
+            >
+              <a
+                class="link-light"
+                href="/"
+              >
+                <h4>
+                  Library Hash Repository
+                </h4>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="navCol col-lg-6 d-flex justify-content-end mb-3"
+        >
+          <div
+            class="row"
+          >
+            <div
+              class="col-9 col-lg-4 col-sm-6 d-flex justify-content-end mb-2 mb-lg-0"
+            >
+              <a
+                class="btn btn-light btn-lg p-2"
+                href="/library"
+                role="button"
+              >
+                Libraries
+              </a>
+            </div>
+            <div
+              class="col-3 col-lg-3 col-sm-6 d-flex justify-content-end mb-2 mb-lg-0"
+            >
+              <a
+                class="btn btn-light btn-lg p-2"
+                href="/login"
+                role="button"
+              >
+                Login
+              </a>
+            </div>
+            <div
+              class="col-4 col-lg-4 col-sm-6 d-flex justify-content-end mb-2 mb-lg-0"
+            >
+              <a
+                class="btn btn-light btn-lg p-2"
+                href="/register"
+                role="button"
+              >
+                Register
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header
+      class="text-center py-5"
+    >
+      <h1>
+        Welcome to the Library Data Repository
+      </h1>
+      <p
+        class="lead"
+      >
+        Your go-to platform for managing and validating library data.
+      </p>
+    </header>
+    <section
+      class="py-5 bg-light"
+      id="featured"
+    >
+      <div
+        class="container"
+      >
+        <h2
+          class="text-center mb-4"
+        >
+          Recent Malicious Libraries Found
+        </h2>
+      </div>
+    </section>
+    <section
+      class="py-5"
+      id="about"
+    >
+      <div
+        class="container"
+      >
+        <h2
+          class="text-center mb-4"
+        >
+          About Us
+        </h2>
+        <p
+          class="text-center"
+        />
+      </div>
+    </section>
+    <section
+      class="py-5 bg-light"
+      id="cta"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="col-md-8 mx-auto text-center"
+          >
+            <h2>
+              Get Started
+            </h2>
+            <p>
+              Sign up now to explore the collection of libraries.
+            </p>
+            <a
+              class="btn btn-dark btn-lg p-2"
+              href="/register"
+              role="button"
+            >
+              Register
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer
+      class="bg-dark text-white text-center py-4"
+    >
+      <div
+        class="container"
+      >
+        <nav>
+          <ul
+            class="list-inline mb-0"
+          >
+            <li
+              class="list-inline-item"
+            >
+              <a
+                class="text-white"
+                href="/contact"
+              >
+                Contact Us
+              </a>
+            </li>
+            <li
+              class="list-inline-item"
+            >
+              <a
+                class="text-white"
+                href="/terms"
+              >
+                Terms of Service
+              </a>
+            </li>
+            <li
+              class="list-inline-item"
+            >
+              <a
+                class="text-white"
+                href="/privacy"
+              >
+                Privacy Policy
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <p
+          class="mb-0"
+        >
+          © 2024 Library Data Repository. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </div>
+</DocumentFragment>
+`;

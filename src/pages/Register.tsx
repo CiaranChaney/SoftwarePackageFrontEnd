@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import { LockOutlined } from "@mui/icons-material";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Favicon from "../components/Favicon";
@@ -32,12 +32,12 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
-  const validateEmail = (email) => {
+  const validateEmail = (email: string) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regex.test(email);
   };
 
-  const handleRegister = async (event) => {
+  const handleRegister = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     if (!validateEmail(email)) {
       console.log("Invalid email");
@@ -64,6 +64,7 @@ const Register = () => {
         console.log("Invalid registration");
       }
     } catch (error) {
+      // @ts-ignore
       if (error.response && error.response.status === 500) {
         console.log("Invalid registration");
         toast.error("User already exists with that email or username. Please try again.")

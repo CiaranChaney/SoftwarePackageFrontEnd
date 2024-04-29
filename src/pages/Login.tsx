@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { LockOutlined } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Favicon from "../components/Favicon";
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,10 +29,10 @@ const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async (event) => {
+  const handleLogin = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     try {
       const response = await axios.post("https://ciaranchaney.com:443/login", {
@@ -52,6 +52,7 @@ const Login = () => {
         console.log("Invalid username or password");
       }
     } catch (error) {
+      // @ts-ignore
       if (error.response && error.response.status === 401) {
         toast.error("Invalid username or password")
       }
@@ -103,7 +104,6 @@ const Login = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                r
               />
               <Typography variant={"body2"} color={"error"}>
                 {errorMessage && <div>{errorMessage}</div>}
