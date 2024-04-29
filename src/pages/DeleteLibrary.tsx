@@ -32,11 +32,6 @@ const DeleteLibraryPage: React.FC = () => {
     if (typeof window !== 'undefined' && window.localStorage) {
       const token = localStorage.getItem("token");
       if (token) {
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
       }
     }
 

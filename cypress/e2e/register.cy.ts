@@ -31,7 +31,7 @@ describe('template spec', () => {
 
         //Existing user test
         cy.get('#username').click().type(`cypressTesting57`);
-        cy.get('#email').click().type(`cypressTesting57email.com`);
+        cy.get('#email').click().type(`cypressTesting57@email.com`);
         cy.get('#password').type('cypressTesting');
         cy.get('.MuiButtonBase-root').click();
         cy.contains('User already exists with that email or username. Please try again.').should('be.visible');

@@ -22,7 +22,7 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "libraryHashing/src", "libraryHashing/test", "libraryHashing/src/components", "libraryHashing/src/pages"
+    "libraryHashing/src", "libraryHashing/test", "libraryHashing/src/components", "libraryHashing/src/pages", "./jest-setup.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json"}]
 }

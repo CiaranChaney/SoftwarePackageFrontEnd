@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import {Button, Grid, TextField} from "@mui/material";
+import {TextField} from "@mui/material";
 import axios from "axios";
 import moment from "moment";
 import { jwtDecode } from "jwt-decode";
@@ -22,10 +22,20 @@ const decodedToken = token && jwtDecode(token);
 const isAdmin =
   decodedToken && decodedToken.roles && decodedToken.roles.includes("ADMIN");
 
+interface Library {
+    libraryId: number;
+    libraryName: string;
+    version: string;
+    createdAt: string;
+    hash: {
+        hashValue: string;
+    };
+}
+
 const LibraryDataTable = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [hashSearchQuery, setHashSearchQuery] = useState("");
-  const [listLibrary, setListLibrary] = useState([]);
+  const [listLibrary, setListLibrary] = useState<Library[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [pageSize, setPageSize] = useState(50);
   const [totalRows, setTotalRows] = useState(0);
@@ -78,6 +88,7 @@ const LibraryDataTable = () => {
         })
         .then((response) => {
           if (Array.isArray(response.data)) {
+            // @ts-ignore
             setListLibrary(response.data);
           } else {
             console.error("Invalid response data format");
@@ -95,6 +106,7 @@ const LibraryDataTable = () => {
         })
         .then((response) => {
           if (response.data) {
+            // @ts-ignore
             setListLibrary([response.data]);
           } else {
             console.error("No library found with that hash");
@@ -121,7 +133,7 @@ const LibraryDataTable = () => {
       field: "edit",
       headerName: "",
       width: 100,
-      renderCell: (params) => (
+      renderCell: (params: { row: { libraryId: any; }; }) => (
         <div>
           {isAdmin && (
             <a className={"btn btn-warning"}
@@ -141,7 +153,7 @@ const LibraryDataTable = () => {
       field: "delete",
       headerName: "",
       width: 120,
-      renderCell: (params) => (
+      renderCell: (params: { row: { libraryId: any; }; }) => (
         <div>
           {isAdmin && (
             <a className={"btn btn-danger"}
@@ -197,7 +209,7 @@ const LibraryDataTable = () => {
 
               <div className={"col-lg-4 col-md-6 mb-3"}>
                 <LibraryUpload
-                    onFileUpload={(hashValue) => setHashSearchQuery(hashValue)}
+                    onFileUpload={(hashValue: React.SetStateAction<string>) => setHashSearchQuery(hashValue)}
                 />
               </div>
 

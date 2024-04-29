@@ -1,0 +1,345 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LibraryPage renders correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="col"
+    >
+      <div
+        class="container-fluid"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="navCol col-lg-6 mb-3"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="col"
+              >
+                <a
+                  class="link-light"
+                  href="/"
+                >
+                  <h4>
+                    Library Hash Repository
+                  </h4>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="navCol col-lg-6 d-flex justify-content-end mb-3"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="col-9 col-lg-4 col-sm-6 d-flex justify-content-end mb-2 mb-lg-0"
+              >
+                <a
+                  class="btn btn-light btn-lg p-2"
+                  href="/library"
+                  role="button"
+                >
+                  Libraries
+                </a>
+              </div>
+              <div
+                class="col-3 col-lg-3 col-sm-6 d-flex justify-content-end mb-2 mb-lg-0"
+              >
+                <a
+                  class="btn btn-light btn-lg p-2"
+                  href="/login"
+                  role="button"
+                >
+                  Login
+                </a>
+              </div>
+              <div
+                class="col-4 col-lg-4 col-sm-6 d-flex justify-content-end mb-2 mb-lg-0"
+              >
+                <a
+                  class="btn btn-light btn-lg p-2"
+                  href="/register"
+                  role="button"
+                >
+                  Register
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class="col"
+      >
+        <div
+          class="Toastify"
+        />
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="container-fluid"
+        >
+          <div
+            class="row"
+          >
+            <div
+              class="col-lg-4 col-md-6 mb-3"
+            >
+              <div
+                class="MuiFormControl-root MuiFormControl-marginNormal MuiFormControl-fullWidth MuiTextField-root css-17vbkzs-MuiFormControl-root-MuiTextField-root"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                  data-shrink="false"
+                  for=":r0:"
+                  id=":r0:-label"
+                >
+                  Search by Library Name
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                    id=":r0:"
+                    type="text"
+                    value=""
+                  />
+                  <fieldset
+                    aria-hidden="true"
+                    class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="css-yjsfm1"
+                    >
+                      <span>
+                        Search by Library Name
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+              <a
+                class="btn btn-dark btn-lg mt-2"
+                role="button"
+              >
+                Search by Name
+              </a>
+            </div>
+            <div
+              class="col-lg-4 col-md-6 mb-3"
+            >
+              <div
+                class="col"
+              >
+                <div
+                  class="mb-3"
+                >
+                  <label
+                    class="form-label"
+                    for="formFile"
+                  />
+                  <input
+                    class="form-control"
+                    id="formFile"
+                    type="file"
+                  />
+                </div>
+                <div
+                  class="col"
+                >
+                  <button
+                    class="btn btn-dark btn-lg"
+                    type="button"
+                  >
+                    Upload File
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-lg-4 col-md-12 mb-3"
+            >
+              <div
+                class="MuiFormControl-root MuiFormControl-marginNormal MuiFormControl-fullWidth MuiTextField-root css-17vbkzs-MuiFormControl-root-MuiTextField-root"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                  data-shrink="false"
+                  for=":r1:"
+                  id=":r1:-label"
+                >
+                  Search by Hash
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                    id=":r1:"
+                    type="text"
+                    value=""
+                  />
+                  <fieldset
+                    aria-hidden="true"
+                    class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="css-yjsfm1"
+                    >
+                      <span>
+                        Search by Hash
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+              <a
+                class="btn btn-dark btn-lg mt-2"
+                role="button"
+              >
+                Search by Hash
+              </a>
+            </div>
+          </div>
+          <div
+            class="row"
+          >
+            <div
+              class="col"
+            >
+              <div
+                class="mt-3 mb-3"
+              >
+                <div
+                  aria-busy="true"
+                  aria-label="three-circles-loading"
+                  class="sc-beySPh gZmPOF"
+                  data-testid="three-circles-wrapper"
+                  role="progressbar"
+                >
+                  <svg
+                    data-testid="three-circles-svg"
+                    enable-background="new 0 0 100 100"
+                    height="100"
+                    version="1.1"
+                    viewBox="0 0 100 100"
+                    width="100"
+                    xml:space="preserve"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3 c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z"
+                      fill="#ffffffff"
+                    >
+                      <animatetransform
+                        attributeName="transform"
+                        attributeType="XML"
+                        dur="2s"
+                        from="0 50 50"
+                        repeatCount="indefinite"
+                        to="360 50 50"
+                        type="rotate"
+                      />
+                    </path>
+                    <path
+                      d="M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7 c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z"
+                      fill="#ffffffff"
+                    >
+                      <animatetransform
+                        attributeName="transform"
+                        attributeType="XML"
+                        dur="1s"
+                        from="0 50 50"
+                        repeatCount="indefinite"
+                        to="-360 50 50"
+                        type="rotate"
+                      />
+                    </path>
+                    <path
+                      d="M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5 L82,35.7z"
+                      fill="#ffffffff"
+                    >
+                      <animatetransform
+                        attributeName="transform"
+                        attributeType="XML"
+                        dur="2s"
+                        from="0 50 50"
+                        repeatCount="indefinite"
+                        to="360 50 50"
+                        type="rotate"
+                      />
+                    </path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="bg-dark text-white text-center py-4"
+    >
+      <div
+        class="container"
+      >
+        <nav>
+          <ul
+            class="list-inline mb-0"
+          >
+            <li
+              class="list-inline-item"
+            >
+              <a
+                class="text-white"
+                href="/contact"
+              >
+                Contact Us
+              </a>
+            </li>
+            <li
+              class="list-inline-item"
+            >
+              <a
+                class="text-white"
+                href="/terms"
+              >
+                Terms of Service
+              </a>
+            </li>
+            <li
+              class="list-inline-item"
+            >
+              <a
+                class="text-white"
+                href="/privacy"
+              >
+                Privacy Policy
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <p
+          class="mb-0"
+        >
+          © 2024 Library Data Repository. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </div>
+</DocumentFragment>
+`;

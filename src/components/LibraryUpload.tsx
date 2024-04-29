@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import { useState} from "react";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-const LibraryUpload = ({ onFileUpload }) => {
+// @ts-ignore
+const LibraryUpload = ({onFileUpload}) => {
     const [file, setFile] = useState(null);
 
-    const handleFileChange = (event) => {
-        setFile(event.target.files[0]);
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const files = event.target.files;
+        if (files) {
+            // @ts-ignore
+            setFile(files[0]);
+        }
     };
 
     const handleUpload = async () => {
