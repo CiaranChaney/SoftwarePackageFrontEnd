@@ -81,32 +81,6 @@ describe('Login Page', () => {
 
     });
 
-    it('successfully logs in and navigates to the library', async () => {
-        const mockPost = jest.fn().mockResolvedValue({
-            data: { token: 'fakeToken' }
-        });
-
-        axios.post = mockPost;
-
-        render(
-            <MemoryRouter>  // Use MemoryRouter for tests
-                <Login />
-            </MemoryRouter>
-        );
-
-        fireEvent.change(screen.getByLabelText(/username/i), { target: { value: 'testuser' } });
-        fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'password123' } });
-        fireEvent.click(screen.getByRole('button', { name: /sign in/i }));
-
-        await waitFor(() => expect(mockPost).toHaveBeenCalledWith('https://ciaranchaney.com:443/login', {
-            username: 'testuser',
-            password: 'password123'
-        }));
-
-        expect(localStorage.getItem('token')).toBe('fakeToken');
-        expect(window.location.reload).toHaveBeenCalled();
-    });
-
     it('fails login due to invalid username or password', async () => {
         const mockPost = jest.fn().mockRejectedValue({
             response: {
@@ -146,6 +120,32 @@ describe('Login Page', () => {
         expect(toast.error).toHaveBeenCalledWith("Invalid username or password");
 
         mockConsoleError.mockRestore();
+    });
+
+    it('successfully logs in and navigates to the library', async () => {
+        const mockPost = jest.fn().mockResolvedValue({
+            data: { token: 'fakeToken' }
+        });
+
+        axios.post = mockPost;
+
+        render(
+            <MemoryRouter>  // Use MemoryRouter for tests
+                <Login />
+            </MemoryRouter>
+        );
+
+        fireEvent.change(screen.getByLabelText(/username/i), { target: { value: 'testuser' } });
+        fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'password123' } });
+        fireEvent.click(screen.getByRole('button', { name: /sign in/i }));
+
+        await waitFor(() => expect(mockPost).toHaveBeenCalledWith('https://ciaranchaney.com:443/login', {
+            username: 'testuser',
+            password: 'password123'
+        }));
+
+        expect(localStorage.getItem('token')).toBe('fakeToken');
+        expect(window.location.reload).toHaveBeenCalled();
     });
 });
 
