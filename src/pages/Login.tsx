@@ -17,6 +17,7 @@ import axios from "axios";
 import Favicon from "../components/Favicon";
 import 'react-toastify/dist/ReactToastify.css';
 import {toast, ToastContainer} from "react-toastify";
+import NavBar from "../components/NavBar";
 
 const darkTheme = createTheme({
   palette: {
@@ -64,6 +65,7 @@ const Login = () => {
     <ThemeProvider theme={darkTheme}>
       <ToastContainer />
       <Favicon />
+      <NavBar />
       <Container maxWidth={"xs"}>
         <CssBaseline />
         <Box

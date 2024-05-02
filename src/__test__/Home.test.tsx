@@ -38,6 +38,7 @@ describe('HomePage', () => {
         expect(document.querySelector('link[rel="icon"]')).toBeInTheDocument();
         expect(getByText('Library Hash Repository')).toBeInTheDocument();
         expect(getByText('Libraries')).toBeInTheDocument();
+        expect(getByText('View Libraries')).toBeInTheDocument();
         expect(getByText('Login')).toBeInTheDocument();
         const registerButtons = screen.getAllByText('Register');
         registerButtons.forEach(button => {
@@ -54,10 +55,9 @@ describe('HomePage', () => {
                 <HomePage />
             </BrowserRouter>
         );
-        expect(getByText('Welcome to the Library Data Repository')).toBeInTheDocument();
+        expect(getByText('Welcome to the Hash Veritas Repository')).toBeInTheDocument();
         expect(getByText('Recent Malicious Libraries Found')).toBeInTheDocument();
-        expect(getByText('About Us')).toBeInTheDocument();
-        expect(getByText('Get Started')).toBeInTheDocument();
+        expect(getByText('Get Started with Our Services')).toBeInTheDocument();
     });
 
 

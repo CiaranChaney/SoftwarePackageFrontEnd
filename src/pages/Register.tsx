@@ -16,6 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Favicon from "../components/Favicon";
 import {toast, ToastContainer} from "react-toastify";
+import NavBar from "../components/NavBar";
 
 const darkTheme = createTheme({
   palette: {
@@ -78,6 +79,7 @@ const Register = () => {
     <ThemeProvider theme={darkTheme}>
       <Favicon />
       <ToastContainer />
+      <NavBar />
       <Container maxWidth={"xs"}>
         <CssBaseline />
         <Box
