@@ -17,7 +17,7 @@ const NavBar: React.FC = () => {
             <div className={"row"}>
               <div className={"col"}>
                 <a className={"link-light"} href={"/"}>
-                  <h4>Library Hash Repository</h4>
+                  <h4>Hash Veritas Repository</h4>
                 </a>
               </div>
             </div>
