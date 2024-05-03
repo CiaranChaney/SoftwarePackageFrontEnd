@@ -146,12 +146,12 @@ exports[`HomePage renders correctly 1`] = `
                 <p
                   class="fw-bold"
                 >
-                  Fix version: 440
+                  Mitigated version: 440
                 </p>
                 <p
                   class="fw-bold"
                 >
-                  Fix Hash:
+                  Mitigated Hash:
                 </p>
                 <p
                   class="text-monospace"

@@ -38,8 +38,8 @@ const Home = () => {
                                     <p className="card-text">Deserialization of untrusted data can occur </p>
                                     <p className="fw-bold">Vulnerable Hash:</p>
                                     <p className="text-monospace">c7bb819bd87639d0b5de393b02e31a58e36e3cec196928e1c28dfef08f64d5cb</p>
-                                    <p className="fw-bold">Fix version: 440</p>
-                                    <p className="fw-bold">Fix Hash:</p>
+                                    <p className="fw-bold">Mitigated version: 440</p>
+                                    <p className="fw-bold">Mitigated Hash:</p>
                                     <p className="text-monospace">55e1eefe8a7524079c64d28cb781d71fd2f2fe69e827e288fb9b7461c22c7c95</p>
                                 </div>
                                 <div className="card-footer">
