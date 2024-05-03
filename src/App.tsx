@@ -9,6 +9,8 @@ import DeleteLibrary from "./pages/DeleteLibrary";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import Contact from "./pages/Contact";
+import AdminPanel from "./pages/AdminPanel";
+import EditUser from "./components/EditUser";
 
 
 
@@ -31,6 +33,18 @@ function App() {
           <Route
             path="/deleteLibrary/:libraryId"
             element={<DeleteLibrary />}
+          />
+        </Route>
+        <Route path="/AdminPanel" element={<SecureRoute />}>
+          <Route
+              path="/AdminPanel"
+              element={<AdminPanel />}
+          />
+        </Route>
+        <Route path="/user/edit/:userId" element={<SecureRoute />}>
+          <Route
+              path="/user/edit/:userId"
+              element={<EditUser />}
           />
         </Route>
         <Route path="/terms" element={<Terms />} />
