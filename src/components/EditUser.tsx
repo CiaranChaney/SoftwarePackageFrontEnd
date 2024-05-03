@@ -36,7 +36,7 @@ const EditUser = () => {
                     headers: { Authorization: `Bearer ${token}` }
                 };
 
-                const response = await axios.get(`http://localhost:7050/api/users/${userId}`, config);
+                const response = await axios.get(`https://ciaranchaney.com:443/api/users/${userId}`, config);
                 setUserData(response.data);
             } catch (error) {
                 console.error('Error fetching user data: ', error);
@@ -63,7 +63,7 @@ const EditUser = () => {
             };
 
             await axios.put(
-                `http://localhost:7050/api/users/${userId}`,
+                `https://ciaranchaney.com:443/api/users/${userId}`,
                 updatedUserData,
                 {
                     headers: {

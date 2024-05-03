@@ -25,7 +25,7 @@ const UserList = () => {
                     headers: { Authorization: `Bearer ${token}` }
                 };
 
-                const response = await axios.get<User[]>('http://localhost:7050/api/users', config);
+                const response = await axios.get<User[]>('https://ciaranchaney.com:443/api/users', config);
                 setUsers(response.data);
             } catch (error) {
                 console.error('Error fetching data: ', error);
@@ -52,7 +52,7 @@ const UserList = () => {
                 headers: { Authorization: `Bearer ${token}` }
             };
 
-            await axios.delete(`http://localhost:7050/api/users/${id}`, config);
+            await axios.delete(`https://ciaranchaney.com:443/api/users/${id}`, config);
             setUsers(prevUsers => prevUsers.filter(user => user.userId !== id)); // Remove deleted user from the list
         } catch (error) {
             console.error('Error deleting user: ', error);
