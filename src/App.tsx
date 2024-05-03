@@ -11,6 +11,7 @@ import Privacy from "./pages/Privacy";
 import Contact from "./pages/Contact";
 import AdminPanel from "./pages/AdminPanel";
 import EditUser from "./components/EditUser";
+import AddUser from "./components/AddUser";
 
 
 
@@ -45,6 +46,12 @@ function App() {
           <Route
               path="/user/edit/:userId"
               element={<EditUser />}
+          />
+        </Route>
+        <Route path="/addUser" element={<SecureRoute />}>
+          <Route
+              path="/addUser"
+              element={<AddUser />}
           />
         </Route>
         <Route path="/terms" element={<Terms />} />
