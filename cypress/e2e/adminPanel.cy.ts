@@ -41,6 +41,35 @@ describe('Admin Panel Page', () => {
         cy.url().should('include', '/adminpanel');
     });
 
+    it('Should add user', () => {
+        let token = Cypress.env('token');
+
+        cy.window().then((win) => {
+            win.localStorage.setItem('token', token);
+        });
+
+        cy.visit('https://www.hashveritas.com/adminpanel/', {failOnStatusCode: false});
+        cy.url().should('include', '/adminpanel');
+
+        cy.get('a[href="/addUser"]').click();
+
+        cy.get('#username').click();
+        cy.get('#username').type('e2eCypressTest');
+
+        cy.get('#email').click();
+        cy.get('#email').type('e2eCypressTest@email.com');
+
+        cy.get('#password').click();
+        cy.get('#password').type('e2eCypressTest');
+
+        cy.get('#role').click();
+        cy.get('#role').type('USER');
+
+        cy.get('.MuiButtonBase-root').click();
+
+
+    });
+
     it('Should edit user', () => {
         let token = Cypress.env('token');
 
@@ -52,45 +81,47 @@ describe('Admin Panel Page', () => {
         cy.url().should('include', '/adminpanel');
 
         cy.get('table')
-            .find('tr').eq(2)
-            .find('a[href="/user/edit/2"]')
-            .click();
+            .contains('td', 'e2eCypressTest')
+            .parent('tr')
+            .within(() => {
+                // Find and click the edit button
+                cy.get('.btn-secondary').click();
+            });
 
 
         cy.get('#username').click();
         cy.get('#username').clear();
-        cy.get('#username').type('jwtTest5');
+        cy.get('#username').type('e2eCypressTestEdited');
         cy.get('.MuiButtonBase-root').click();
 
         cy.url().should('contains', 'https://www.hashveritas.com/AdminPanel/');
 
-        cy.get('table')
-            .find('tr').eq(2)
-            .find('a[href="/user/edit/2"]')
-            .click();
-
-        cy.get('#username').click();
-        cy.get('#username').clear();
-        cy.get('#username').type('jwtTest');
-        cy.get('.MuiButtonBase-root').click();
-
-        cy.url().should('contains', 'https://www.hashveritas.com/AdminPanel/');
 
     });
 
-    it('Should add user', () => {
+    it('Should delete user', () => {
+
         let token = Cypress.env('token');
 
         cy.window().then((win) => {
             win.localStorage.setItem('token', token);
         });
 
-        cy.visit('https://www.hashveritas.com/adminpanel/', {failOnStatusCode: false});
+        cy.visit('https://www.hashveritas.com/adminpanel/', { failOnStatusCode: false });
+
         cy.url().should('include', '/adminpanel');
 
+        cy.on('window:confirm', () => true);
+
+        cy.get('table')
+            .contains('td', 'e2eCypressTestEdited')
+            .parent('tr')
+            .within(() => {
+                // Find and click the delete button
+                cy.get('.btn-danger').click();
+            });
 
     });
-
 
 
 });

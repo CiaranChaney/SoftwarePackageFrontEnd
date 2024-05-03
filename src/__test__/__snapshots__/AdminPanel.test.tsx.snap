@@ -88,7 +88,7 @@ exports[`AdminPage renders correctly 1`] = `
         >
           <a
             class="nav-link text-light"
-            href="/AdminPanel/user/new"
+            href="/addUser"
           >
             Add User
           </a>
