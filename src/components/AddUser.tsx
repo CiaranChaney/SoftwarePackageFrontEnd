@@ -1,16 +1,8 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {Button, createTheme, CssBaseline, Grid, TextField, ThemeProvider} from "@mui/material";
 import Favicon from "./Favicon";
 import NavBar from "./NavBar";
-
-interface User {
-    userId: number;
-    username: string;
-    email: string;
-    role: string;
-}
 
 const darkTheme = createTheme({
     palette: {
@@ -18,33 +10,8 @@ const darkTheme = createTheme({
     },
 });
 
-const EditUser = () => {
-    const { userId } = useParams<{ userId: string }>();
-    const [userData, setUserData] = useState<User | null>(null);
+const AddUser = () => {
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const token = localStorage.getItem('token');
-                if (!token) {
-                    console.log('No token found');
-                    return;
-                }
-
-                const config = {
-                    headers: { Authorization: `Bearer ${token}` }
-                };
-
-                const response = await axios.get(`https://ciaranchaney.com:443/api/users/${userId}`, config);
-                setUserData(response.data);
-            } catch (error) {
-                console.error('Error fetching user data: ', error);
-            }
-        };
-
-        fetchUser().then(() => console.log("User data fetched"));
-    }, [userId]);
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -54,17 +21,19 @@ const EditUser = () => {
 
             const username = (event.currentTarget.querySelector("#username") as HTMLInputElement)?.value || '';
             const email = (event.currentTarget.querySelector("#email") as HTMLInputElement)?.value || '';
+            const password = (event.currentTarget.querySelector("#password") as HTMLInputElement)?.value || '';
             const role = (event.currentTarget.querySelector("#role") as HTMLInputElement)?.value || '';
 
-            const updatedUserData = {
+            const UserData = {
                 username,
                 email,
+                password,
                 role,
             };
 
-            await axios.put(
-                `https://ciaranchaney.com:443/api/users/${userId}`,
-                updatedUserData,
+            await axios.post(
+                `https://ciaranchaney.com:443/api/users`,
+                UserData,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -86,7 +55,6 @@ const EditUser = () => {
             <NavBar />
             <div>
                 <h2>Edit User</h2>
-                {userData && (
                     <form onSubmit={handleSubmit} style={{ marginBottom: 20 }}>
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
@@ -100,7 +68,6 @@ const EditUser = () => {
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    defaultValue={userData.username}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -115,9 +82,23 @@ const EditUser = () => {
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    defaultValue={userData.email}
                                 />
                             </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    id="password"
+                                    label="Password"
+                                    variant="outlined"
+                                    name="password"
+                                    required
+                                    fullWidth
+                                    autoFocus
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                />
+                            </Grid>
+
                             <Grid item xs={12}>
                                 <TextField
                                     id="role"
@@ -130,7 +111,6 @@ const EditUser = () => {
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    defaultValue={userData.role || ''} // Handle nullability
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -145,10 +125,9 @@ const EditUser = () => {
                             </Grid>
                         </Grid>
                     </form>
-                )}
             </div>
         </ThemeProvider>
     );
 };
 
-export default EditUser;
+export default AddUser;

@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdminPage renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="container-fluid"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="navCol col-lg-6 mb-3"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="col"
+          >
+            <a
+              class="link-light"
+              href="/"
+            >
+              <h4>
+                Library Hash Repository
+              </h4>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="navCol col-lg-6 d-flex justify-content-end mb-3"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="col-9 col-lg-4 col-sm-6 d-flex justify-content-end mb-2 mb-lg-0"
+          >
+            <a
+              class="btn btn-light btn-lg p-2"
+              href="/library"
+              role="button"
+            >
+              Libraries
+            </a>
+          </div>
+          <div
+            class="col-3 col-lg-3 col-sm-6 d-flex justify-content-end mb-2 mb-lg-0"
+          >
+            <a
+              class="btn btn-light btn-lg"
+              role="button"
+            >
+              Logout
+            </a>
+          </div>
+          <div
+            class="col-12 col-lg-5 d-flex justify-content-end"
+          >
+            <div
+              class="text-end"
+            >
+              <h6>
+                Logged in as: 
+                <strong />
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="container bg-dark text-white"
+  >
+    <h1
+      class="pt-4 pb-2"
+    >
+      Admin Dashboard
+    </h1>
+    <nav>
+      <ul
+        class="nav"
+      >
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link text-light"
+            href="/AdminPanel/user/new"
+          >
+            Add User
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div>
+      <h2>
+        User List
+      </h2>
+      <table
+        class="table table-dark table-striped"
+      >
+        <thead>
+          <tr>
+            <th>
+              ID
+            </th>
+            <th>
+              Username
+            </th>
+            <th>
+              Email
+            </th>
+            <th>
+              Role
+            </th>
+            <th>
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+    </div>
+  </div>
+  <div>
+    <h2>
+      User List
+    </h2>
+    <table
+      class="table table-dark table-striped"
+    >
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            Username
+          </th>
+          <th>
+            Email
+          </th>
+          <th>
+            Role
+          </th>
+          <th>
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
+</DocumentFragment>
+`;
